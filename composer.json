@@ -1,0 +1,28 @@
+{
+  "name": "robinksp/querybuilder",
+  "description": "A simple query builder for php applications",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Robin kashyap",
+      "email": "robinksp01@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "robinksp\\querybuilder\\": "src/"
+    }
+  },
+  "require": {},
+  "minimum-stability": "dev",
+  "version": "1.1.0",
+  "scripts": {
+    "post-install-cmd": [
+      "robinksp\\querybuilder::createConnectionFile"
+    ],
+    "post-update-cmd": [
+      "robinksp\\querybuilder::createConnectionFile"
+    ]
+  }
+}
