@@ -6,7 +6,7 @@
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'reference' => NULL,
-        'name' => 'robinksp/querybuilder',
+        'name' => 'robinksp/simple-query-builder',
         'dev' => true,
     ),
     'versions' => array(
@@ -111,7 +111,7 @@
             'reference' => '9fa21014f4c615cf231b659fb7ea18cc402e96f2',
             'dev_requirement' => true,
         ),
-        'robinksp/querybuilder' => array(
+        'robinksp/simple-query-builder' => array(
             'pretty_version' => '0.0.1',
             'version' => '0.0.1.0',
             'type' => 'library',
