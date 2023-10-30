@@ -20,7 +20,7 @@ class Query
     protected $limit;
     protected $offset;
 
-    protected PDO $pdo;
+    protected PDO|Connection $pdo;
     public function __construct(
         PDO|Connection $connection
     ) {
