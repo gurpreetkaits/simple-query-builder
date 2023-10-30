@@ -29,5 +29,5 @@
     "php": "^8.1"
   },
   "minimum-stability": "dev",
-  "version": "0.0.1"
+  "version": "0.1.1"
 }
