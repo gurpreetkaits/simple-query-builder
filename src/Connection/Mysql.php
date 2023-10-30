@@ -6,24 +6,33 @@ use PDO;
 
 class Mysql
 {
-    protected $pdo;
+    private $host;
+    private $database;
+    private $username;
+    private $password;
+    private $charset;
+    private $pdo;
 
-    public function __construct()
+    public function __construct($host, $database, $username, $password, $charset = 'utf8')
     {
-        $host = 'localhost';
-        $username = "root";
-        $password = '';
-        $dbname = 'crud';
-
-        $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
-        $this->pdo = new PDO($dsn, $username, $password);
-        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->host = $host;
+        $this->database = $database;
+        $this->username = $username;
+        $this->password = $password;
+        $this->charset = $charset;
     }
 
-    public function executeQuery($query): array
+    public function connect() : PDO
     {
-        $stmt = $this->pdo->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $dsn = "mysql:host={$this->host};dbname={$this->database};charset={$this->charset}";
+
+        try {
+            $this->pdo = new \PDO($dsn, $this->username, $this->password);
+            $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            return $this->pdo;
+        } catch (\PDOException $e) {
+            // Handle connection errors
+            die("Connection failed: " . $e->getMessage());
+        }
     }
 }

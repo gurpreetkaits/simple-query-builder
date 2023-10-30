@@ -4,14 +4,12 @@ namespace robinksp\querybuilder;
 
 use Closure;
 use PDO;
-use robinksp\querybuilder\Components\DebugTrait;
 use robinksp\querybuilder\Connection\Mysql;
 use robinksp\querybuilder\Interfaces\QueryBuilderInterface;
 use robinksp\querybuilder\Components\WhereClausesTrait;
 
-class Query extends Mysql implements QueryBuilderInterface
+class Query
 {
-    use WhereClausesTrait,DebugTrait;
     private $table;
     private $select = '*';
     private $where = [];
@@ -22,12 +20,11 @@ class Query extends Mysql implements QueryBuilderInterface
     protected $limit;
     protected $offset;
 
-    protected int $page;
-    protected int $perPage;
-
-    public function __construct()
-    {
-        parent::__construct();
+    protected PDO $pdo;
+    public function __construct(
+        PDO $connection
+    ) {
+        $this->pdo = $connection;
     }
 
     public function table(string $table)
@@ -44,6 +41,7 @@ class Query extends Mysql implements QueryBuilderInterface
 
     public function join(string $table, string $firstColumn, string $operator, string $secondColumn, string $type = 'INNER')
     {
+        $type = strtoupper($type);
         $this->joins[] = "$type JOIN $table ON $firstColumn $operator $secondColumn";
         return $this;
     }
@@ -59,11 +57,6 @@ class Query extends Mysql implements QueryBuilderInterface
     }
     public function get()
     {
-        if (!empty($this->page)) {
-            $page = !empty($this->page) ? $this->page : 1;
-            $perPage = !empty($this->perPage) ? $this->perPage : 10;
-            $this->offset = ($page - 1) * $perPage;
-        }
 
         $query = "SELECT {$this->select} FROM {$this->table}";
 
@@ -131,26 +124,27 @@ class Query extends Mysql implements QueryBuilderInterface
     private function buildWhere()
     {
         $whereClauses = [];
-
         foreach ($this->where as $condition) {
             $column = $condition['column'];
             $operator = $condition['operator'];
             $value = $condition['value'];
-            $boolean = $condition['boolean'];
+            $boolean = $condition['boolean'] ?: '';
 
             if ($value instanceof Closure) {
-                $builder = new self();
+                $builder = new self($this->pdo);
                 $value($builder);
                 $value = '(' . $builder->buildWhere() . ')';
             } else {
                 $value = '?';
             }
-
-            $whereClauses[] = "$column $operator $value $boolean";
+            if ($boolean) {
+                $whereClauses[] = "$boolean $column $operator $value";
+            } else {
+                $whereClauses[] = "$column $operator $value";
+            }
         }
         return implode(' ', $whereClauses);
     }
-
     public function delete()
     {
         $query = "DELETE FROM {$this->table}";
@@ -163,14 +157,34 @@ class Query extends Mysql implements QueryBuilderInterface
 
         return $statement->rowCount();
     }
-    public function setPage($page = 1, $perPage = 10):self
+    // Start Where Clauses ========================================================================================
+    
+    public function whereBetween($column, $from, $to, $boolean = 'AND')
     {
-        $this->page = $page;
-        $this->perPage = $perPage;
+        $operator = 'BETWEEN';
+        $this->where[] = compact('column', 'from', 'to', 'boolean', 'operator');
+        $this->bindings[] = $from;
+        $this->bindings[] = $to;
         return $this;
-
     }
-    public function insert(array $data) : int
+    public function where($column, $operator, $value = null, $boolean = '')
+    {
+        $this->where[] = compact('column', 'operator', 'value', 'boolean');
+        $this->bindings[] = $value;
+        return $this;
+    }
+    public function andWhere($column, $operator, $value = null): self
+    {
+        $this->where($column, $operator, $value, 'AND'); 
+        return $this;
+    }
+    public function orWhere($column, $operator, $value = null): self
+    {
+        $this->where($column, $operator, $value, 'OR');
+         return $this;
+    }
+    // End Where Clauses ========================================================================================
+    public function insert(array $data): int
     {
         $columns = implode(', ', array_keys($data));
         $placeholders = implode(', ', array_fill(0, count($data), '?'));
@@ -203,4 +217,41 @@ class Query extends Mysql implements QueryBuilderInterface
         return $statement->rowCount();
     }
 
+    public function toSql()
+    {
+        $query = "SELECT {$this->select} FROM {$this->table}";
+
+        if (!empty($this->joins)) {
+            $query .= " " . implode(' ', $this->joins);
+        }
+        if (!empty($this->where)) {
+
+            $query .= " WHERE " . $this->buildWhere();
+        }
+
+        if (!empty($this->groupBy)) {
+            $query .= " GROUP BY " . implode(', ', $this->groupBy);
+        }
+
+        if (!empty($this->orderBy)) {
+            $query .= " ORDER BY " . $this->orderBy;
+        }
+
+        if ($this->limit !== null) {
+            $query .= " LIMIT " . $this->limit;
+        }
+
+        if ($this->offset !== null) {
+            $query .= " OFFSET " . $this->offset;
+        }
+
+        $bindings = $this->bindings;
+
+        $query = preg_replace_callback('/\?/', function () use (&$bindings) {
+            $value = array_shift($bindings);
+            return is_numeric($value) ? $value : "'$value'";
+        }, $query);
+
+        return $query;
+    }
 }
