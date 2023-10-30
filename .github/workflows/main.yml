@@ -24,4 +24,4 @@ jobs:
           php composer.phar install
 
       - name: Update Packagist
-        run: php composer.phar require robinksp/querybuilder
+        run: php composer.phar require robinksp/simple-query-builder
