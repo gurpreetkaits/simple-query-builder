@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "18df0d5e6e1b04d39502223e9c026781",
+    "content-hash": "d299aa67851e32a808986d52925f439c",
     "packages": [],
     "packages-dev": [
         {
@@ -320,12 +320,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "a941554183490e17580945faf64d46bc4faf97e2"
+                "reference": "6dddb1a140da5120432a85c1054950f6aaab4ea5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/a941554183490e17580945faf64d46bc4faf97e2",
-                "reference": "a941554183490e17580945faf64d46bc4faf97e2",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/6dddb1a140da5120432a85c1054950f6aaab4ea5",
+                "reference": "6dddb1a140da5120432a85c1054950f6aaab4ea5",
                 "shasum": ""
             },
             "require": {
@@ -390,7 +390,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-10-20T08:36:13+00:00"
+            "time": "2023-10-29T06:48:55+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -639,12 +639,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "d187cc771775fda784799d1bad8732c484c17e9c"
+                "reference": "9fa21014f4c615cf231b659fb7ea18cc402e96f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d187cc771775fda784799d1bad8732c484c17e9c",
-                "reference": "d187cc771775fda784799d1bad8732c484c17e9c",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9fa21014f4c615cf231b659fb7ea18cc402e96f2",
+                "reference": "9fa21014f4c615cf231b659fb7ea18cc402e96f2",
                 "shasum": ""
             },
             "require": {
@@ -734,7 +734,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-10-26T07:26:31+00:00"
+            "time": "2023-10-29T06:48:00+00:00"
         },
         {
             "name": "sebastian/cli-parser",

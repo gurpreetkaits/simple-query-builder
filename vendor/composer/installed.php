@@ -1,7 +1,7 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.1.0',
-        'version' => '1.1.0.0',
+        'pretty_version' => '0.0.1',
+        'version' => '0.0.1.0',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -63,7 +63,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/php-code-coverage',
             'aliases' => array(),
-            'reference' => 'a941554183490e17580945faf64d46bc4faf97e2',
+            'reference' => '6dddb1a140da5120432a85c1054950f6aaab4ea5',
             'dev_requirement' => true,
         ),
         'phpunit/php-file-iterator' => array(
@@ -108,12 +108,12 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
-            'reference' => 'd187cc771775fda784799d1bad8732c484c17e9c',
+            'reference' => '9fa21014f4c615cf231b659fb7ea18cc402e96f2',
             'dev_requirement' => true,
         ),
         'robinksp/querybuilder' => array(
-            'pretty_version' => '1.1.0',
-            'version' => '1.1.0.0',
+            'pretty_version' => '0.0.1',
+            'version' => '0.0.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
