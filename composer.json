@@ -1,5 +1,5 @@
 {
-  "name": "robinksp/querybuilder",
+  "name": "robinksp/simple-query-builder",
   "description": "A simple query builder for php applications",
   "type": "library",
   "license": "MIT",
