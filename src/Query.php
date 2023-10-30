@@ -22,7 +22,7 @@ class Query
 
     protected PDO $pdo;
     public function __construct(
-        PDO $connection
+        PDO|Connection $connection
     ) {
         $this->pdo = $connection;
     }
@@ -158,7 +158,7 @@ class Query
         return $statement->rowCount();
     }
     // Start Where Clauses ========================================================================================
-    
+
     public function whereBetween($column, $from, $to, $boolean = 'AND')
     {
         $operator = 'BETWEEN';
@@ -175,13 +175,13 @@ class Query
     }
     public function andWhere($column, $operator, $value = null): self
     {
-        $this->where($column, $operator, $value, 'AND'); 
+        $this->where($column, $operator, $value, 'AND');
         return $this;
     }
     public function orWhere($column, $operator, $value = null): self
     {
         $this->where($column, $operator, $value, 'OR');
-         return $this;
+        return $this;
     }
     // End Where Clauses ========================================================================================
     public function insert(array $data): int
