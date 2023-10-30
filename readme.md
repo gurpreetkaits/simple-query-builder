@@ -7,6 +7,6 @@ Simple Wuery Builder is a PHP library that provides a simple and easy-to-use que
 
 ```
  
- composer require robinksp/querybuilder 
+composer require robinksp/simple-query-builder 
 
 ```
