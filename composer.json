@@ -1,5 +1,5 @@
 {
-  "name": "robinksp/simple-query-builder",
+  "name": "robinksp/query-builder",
   "description": "A simple query builder for php applications",
   "type": "library",
   "license": "MIT",
@@ -13,6 +13,9 @@
     "psr-4": {
       "robinksp\\querybuilder\\": "src/"
     }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit tests"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5"
