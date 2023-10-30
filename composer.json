@@ -22,7 +22,9 @@
       "robinksp\\querybuilder\\Test\\": "tests/"
     }
   },
-  "require": {},
+  "require": {
+    "php": "^8.1",
+  },
   "minimum-stability": "dev",
   "version": "0.0.1"
 }
