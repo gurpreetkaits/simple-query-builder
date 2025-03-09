@@ -7,7 +7,7 @@ Simple Query Builder is a PHP library that provides a simple and easy-to-use que
 
 ```
  
-composer require robinksp/simple-query-builder 
+composer require gurpreetkaits/simple-query-builder 
 
 ```
 # Simple Example Of Execution
