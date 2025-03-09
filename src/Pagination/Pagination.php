@@ -1,6 +1,6 @@
 <?php
 
-namespace robinksp\querybuilder\Pagination;
+namespace GurpreetKaits\Builder\Pagination;
 
 class Pagination
 {

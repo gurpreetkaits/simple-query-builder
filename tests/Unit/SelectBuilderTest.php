@@ -1,12 +1,10 @@
 <?php
 
-namespace robinksp\querybuilder\Tests;
+namespace GurpreetKaits\Builder\Tests;
 
 use PDO;
 use PHPUnit\Framework\TestCase;
-use robinksp\querybuilder\Connection;
-use robinksp\querybuilder\Connection\Mysql;
-use robinksp\querybuilder\Query;
+use GurpreetKaits\Builder\Query;
 
 class SelectBuilderTest extends TestCase
 {

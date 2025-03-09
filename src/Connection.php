@@ -1,10 +1,10 @@
 <?php
 
-namespace robinksp\querybuilder;
+namespace GurpreetKaits\Builder;
 
 use Exception;
 use PDO;
-use robinksp\querybuilder\Connection\Mysql;
+use GurpreetKaits\Builder\Connection\Mysql;
 
 class Connection
 {

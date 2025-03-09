@@ -1,12 +1,9 @@
 <?php
 
-namespace robinksp\querybuilder;
+namespace GurpreetKaits\Builder;
 
 use Closure;
 use PDO;
-use robinksp\querybuilder\Connection\Mysql;
-use robinksp\querybuilder\Interfaces\QueryBuilderInterface;
-use robinksp\querybuilder\Components\WhereClausesTrait;
 
 class Query
 {

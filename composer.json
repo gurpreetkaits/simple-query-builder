@@ -5,13 +5,13 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Robin kashyap",
-      "email": "robinksp01@gmail.com"
+      "name": "Gurpreet Kait",
+      "email": "gurpreetkait.codes@gmail.com"
     }
   ],
   "autoload": {
     "psr-4": {
-      "robinksp\\querybuilder\\": "src/"
+      "GurpreetKaits\\Builder\\": "src/"
     }
   },
   "scripts": {
@@ -22,7 +22,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "robinksp\\querybuilder\\Test\\": "tests/"
+      "GurpreetKaits\\Builder\\Test\\": "tests/"
     }
   },
   "require": {

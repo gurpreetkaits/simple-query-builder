@@ -17,8 +17,8 @@ composer require robinksp/simple-query-builder
 
 ini_set('display_errors', 1);
 
-use robinksp\querybuilder\Connection;
-use robinksp\querybuilder\Query;
+use GurpreetKaits\Builder\Connection;
+use GurpreetKaits\Builder\Query;
 
 require 'vendor/autoload.php';
 

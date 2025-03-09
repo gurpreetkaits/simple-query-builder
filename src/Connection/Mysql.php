@@ -1,6 +1,6 @@
 <?php
 
-namespace robinksp\querybuilder\Connection;
+namespace GurpreetKaits\Builder\Connection;
 
 use PDO;
 
